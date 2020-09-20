@@ -5,8 +5,8 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
-  organizationName: 'conveyal', // Usually your GitHub org/user name.
-  projectName: 'docs', // Usually your repo name.
+  organizationName: 'conveyal', 
+  projectName: 'docs', 
   themeConfig: {
     image: 'img/android-chrome-512x512.png', // meta image for social media
     navbar: {
@@ -17,12 +17,15 @@ module.exports = {
       },
       items: [
         {
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Docs',
-          position: 'left',
+          href: 'https://conveyal.com/contact-us',
+          label: 'Contact us',
+          position: 'right'
         },
-        // {to: 'changelog', label: 'Blog', position: 'left'},
+        {
+          href: 'https://analysis.conveyal.com',
+          label: 'Log in',
+          position: 'right'
+        },
         {
           href: 'https://github.com/conveyal',
           label: 'GitHub',
@@ -32,35 +35,7 @@ module.exports = {
     },
     footer: {
       style: 'dark',
-      links: [
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Report Issues',
-              href: 'https://github.com/conveyal/docs/issues',
-            },
-            {
-              label: 'Find us on Twitter',
-              href: 'https://twitter.com/conveyal',
-            },
-          ],
-        },
-        {
-          title: 'Github Projects',
-          items: [
-            {
-              label: 'r5',
-              href: 'https://github.com/conveyal/r5',
-            },
-            {
-              label: 'Conveyal UI',
-              href: 'https://github.com/conveyal/analysis-ui',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Conveyal, LLC. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Conveyal, LLC`,
     },
   },
   presets: [
