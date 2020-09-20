@@ -13,7 +13,7 @@ module.exports = {
       title: 'conveyal',
       logo: {
         alt: 'Conveyal Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.svg'
       },
       items: [
         {
@@ -29,14 +29,14 @@ module.exports = {
         {
           href: 'https://github.com/conveyal',
           label: 'GitHub',
-          position: 'right',
-        },
-      ],
+          position: 'right'
+        }
+      ]
     },
     footer: {
       style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} Conveyal, LLC`,
-    },
+      copyright: `Copyright © ${new Date().getFullYear()} Conveyal, LLC`
+    }
   },
   presets: [
     [
@@ -45,14 +45,14 @@ module.exports = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/conveyal/docs/',
+          editUrl: 'https://github.com/conveyal/docs/',
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
-        },
-      },
-    ],
-  ],
-};
+        }
+      }
+    ]
+  ]
+}
