@@ -2,7 +2,7 @@
 title: Modification types
 ---
 
-## Transit Network Modifications
+## Transit network modifications
 
 ### Add trip pattern
 
@@ -129,8 +129,9 @@ Within each timetable, you will need to select a trip pattern from your route, t
 
 Typically, you will need to create _at least_ two new timetables, one for each direction of travel.
 
-.. note::
-   Once converted to a frequency-based route with this modification, any of a route's patterns not represented by a timetable are effectively removed. With "retain trips" set to the default value of false (unchecked), these patterns will be removed at all times of day. With "retain trips" set to true (checked), they will be removed when any frequency entry is active.
+:::note
+Once converted to a frequency-based route with this modification, any of a route's patterns not represented by a timetable are effectively removed. With "retain trips" set to the default value of false (unchecked), these patterns will be removed at all times of day. With "retain trips" set to true (checked), they will be removed when any frequency entry is active.
+:::
    
 ### Remove stops
 
@@ -189,13 +190,16 @@ A few examples should help to illustrate how this modification works. Consider a
 - To detour this pattern so that it serves a stop Z between B and C, select B as the "start of reroute/extension", select C as the "end of reroute/extension", activate route editing, click on the new segment to add a stop, and drag the added stop to Z. Speeds and dwell times can be set on this new segment. Baseline speeds and dwell times between A and B, and between C and D, are not affected.
 
 ### Custom
+
 The custom modification type allows us to try out new development features that are not yet generally supported. _You should not use this modification type without consulting with your support team; an improper configuration may produce errors during analysis._
 
-## Street Network Modifications
-.. note::
-   Simple modifications affecting the street network were introduced in June 2020 and are currently experimental. Later releases will likely change some aspects of these modifications. 
-   
-   For detailed editing of streets and intersections, it is often preferable to use an OSM editing tool (e.g. JOSM) to prepare inputs for Conveyal, rather than relying on these simple modifications.
+## Street network modifications
+
+:::note
+Simple modifications affecting the street network were introduced in June 2020 and are currently experimental. Later releases will likely change some aspects of these modifications. 
+
+For detailed editing of streets and intersections, it is often preferable to use an OSM editing tool (e.g. JOSM) to prepare inputs for Conveyal, rather than relying on these simple modifications.
+:::
 
 Both street modification types require specifying whether access is allowed for **walking**, **cycling**, and **driving**. 
 

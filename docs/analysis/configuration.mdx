@@ -2,14 +2,14 @@
 title: Options and configuration
 ---
 
+import Image from '../../components/image'
+
 Below the accessibility charts, different parameters for the analysis can be set:
 
-![The analysis settings pane](/img/analysis-settings.png)
-
-<figure>
-  <img src="/img/analysis-settings.png" />
-  <figcaption>The analysis settings pane</figcaption>
-</figure>
+<Image 
+  alt='The analysis settings pane'
+  path='/analysis-settings.png'
+/>
 
 ## Travel time and variability
 
@@ -26,8 +26,9 @@ The three mode settings control what transport modes can be used for travel on t
 
 The **access/direct mode** controls what mode may be used for the first or only leg of a journey. If any transit modes are enabled, the selected access mode will be used (up to a maximum time, as described below) to travel from the origin to nearby transit stops, or to access the destination directly if that is faster than using transit. If no transit modes are enabled, the selected mode will be used to travel directly to destinations.
 
-.. note::
-   Traffic congestion is not taken into account in driving time estimates, though this may be a feature of a future release when more detailed datasets are available.
+:::note
+Traffic congestion is not taken into account in driving time estimates, though this may be a feature of a future release when more detailed datasets are available.
+:::
 
 If one or more of the **transit modes** are enabled, the router will consider journeys using the selected transit modes and will add the option of an egress mode. The default is to use all transit modes, though you may change this for example to examine only a subcomponent of your transit network or to model strong user preferences regarding mode. 
 
