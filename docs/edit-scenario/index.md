@@ -4,14 +4,14 @@ slug: /edit-scenario
 
 # Overview of network editing
 
-After selecting a [project](/docs/glossary#project), you will arrive at the modifications page, shown below. Each project has an expandable list of numbered [scenarios](/docs/glossary#scenario) followed by a list of [modifications](/docs/glossary#modification) grouped by type. Each modification represents a single operation on the [baseline network](/docs/glossary#baseline-network) (for example adding a line, or adjusting the speed of an existing line) and can be activated in multiple scenarios. Scenarios are a way of packaging isolated modifications into meaningful groups representing changes to the broader network. For example, you could create a scenario representing each of several funding scenarios with one for service cuts, one for extended service and so on.
+After selecting a [project](/glossary#project), you will arrive at the modifications page, shown below. Each project has an expandable list of numbered [scenarios](/glossary#scenario) followed by a list of [modifications](/glossary#modification) grouped by type. Each modification represents a single operation on the [baseline network](/glossary#baseline-network) (for example adding a line, or adjusting the speed of an existing line) and can be activated in multiple scenarios. Scenarios are a way of packaging isolated modifications into meaningful groups representing changes to the broader network. For example, you could create a scenario representing each of several funding scenarios with one for service cuts, one for extended service and so on.
 
 <figure>
   <img src="/img/create-scenario.png" />
   <figcaption>Initial view in editing mode for an established project</figcaption>
 </figure>
 
-To prevent data conflicts, the system does not support multiple users or browser tabs editing the same project simultaneously. If you expect multiple people in your organization to be using Conveyal Analysis at the same time, you may want to create projects for each of them. Modifications can later be imported into a project from other projects based on the same [network bundle](/docs/glossary#network-bundle) (See [Managing Modifications](/docs/edit-scenario/usage#managing-mods).
+To prevent data conflicts, the system does not support multiple users or browser tabs editing the same project simultaneously. If you expect multiple people in your organization to be using Conveyal Analysis at the same time, you may want to create projects for each of them. Modifications can later be imported into a project from other projects based on the same [network bundle](/glossary#network-bundle) (See [Managing Modifications](/edit-scenario/usage#managing-mods).
 
 ## Create a new modification
 
@@ -19,7 +19,7 @@ To add a modification, first navigate to the modification page (the <i class="fa
 
 <span class="btn btn-success"><i class="fa fa-plus"></i> Create a modification</span>
 
-Clicking on this will open a window prompting you to enter a name for the modification and to select a [modification type](modifications). 
+Clicking on this will open a window prompting you to enter a name for the modification and to select a [modification type](/edit-scenario/modifications). 
 
 <figure>
   <img src="/img/create-mod-dialog.png" />
@@ -40,9 +40,9 @@ will also save any remaining edits and take you back to the list of all modifica
 
 ## Create a new scenario
 
-From the modifications page, you can also create and edit [scenarios](/docs/glossary#scenario). A scenario is used for packaging modifications into meaningful groups representing broader changes to the network.
+From the modifications page, you can also create and edit [scenarios](/glossary#scenario). A scenario is used for packaging modifications into meaningful groups representing broader changes to the network.
 You may need to click the scenarios bar to expand it. Once expanded, you should see the baseline scenario and any others that you have created. Click the button to create a new scenario and give it a name e.g. "_Expanded BRT_" or "_Downtown Stop Consolidation_".
-When editing modifications, you may opt to add them to one or more scenarios. The _baseline scenario_ represents the [baseline network](/docs/glossary#baseline-network) and cannot be edited.
+When editing modifications, you may opt to add them to one or more scenarios. The _baseline scenario_ represents the [baseline network](/glossary#baseline-network) and cannot be edited.
 
 ## Activate a modification in a scenario
 

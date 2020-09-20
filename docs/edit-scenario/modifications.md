@@ -4,7 +4,7 @@
 
 ### Add trip pattern <a name="add-trip-pattern"/>
 
-The **add trip pattern** modification allows you to add new [trip patterns](/docs/glossary#trip-pattern) to your transport scenario. A trip pattern is a set of stops visited in order by a transit vehicle. Often a route will consist of multiple trip patterns, e.g. one for each direction of travel. This modification also offers a bidirectional option to allow a single trip pattern to represent travel in both directions. This may be easier for modes with generally bidirection stations like subways, ferries, or cable cars.
+The **add trip pattern** modification allows you to add new [trip patterns](/glossary#trip-pattern) to your transport scenario. A trip pattern is a set of stops visited in order by a transit vehicle. Often a route will consist of multiple trip patterns, e.g. one for each direction of travel. This modification also offers a bidirectional option to allow a single trip pattern to represent travel in both directions. This may be easier for modes with generally bidirection stations like subways, ferries, or cable cars.
 
 After creating a new modification you will see something like the view below.
 
@@ -48,7 +48,7 @@ On the panel to the left of the map there are a few options available while edit
 
 - **Auto-create stops at set spacing**: Specifies whether stops should be created automatically at a specified interval along the route. When using this option, you will likely want to define your route alignment with control points rather than stops, however if stops are used new stops will not be added unless the gap between existing stops is sufficiently large. The stop spacing can easily be changed later.
 
-- **Bidirectional**: If this option is checked (the default value), vehicles will travel in both directions along the described geometry. If it is toggled off, vehicles will only travel in the direction the line is drawn. Directed alignments can be useful when there are [couplets](https://en.wikipedia.org/wiki/One-way_pair) or other aspects of the route that don't follow the same alignment in both directions. Directed alignments are also necessary for [phasing](/docs/edit-scenario/phasing).
+- **Bidirectional**: If this option is checked (the default value), vehicles will travel in both directions along the described geometry. If it is toggled off, vehicles will only travel in the direction the line is drawn. Directed alignments can be useful when there are [couplets](https://en.wikipedia.org/wiki/One-way_pair) or other aspects of the route that don't follow the same alignment in both directions. Directed alignments are also necessary for [phasing](/edit-scenario/phasing).
 
 - **Follow streets**:
   If this option is unchecked (the default value), stops and control points will be connected by straight lines. If it is checked, the route will follow streets. This setting only applies to segments that are actively being edited and will not cause already drawn segments to follow the streets, allowing you to draw part of a route on street and part off-street. The length of each segment is used to estimate travel times between stops, so this feature is very useful for aproximating the length of bus/streetcar routes.
@@ -59,7 +59,7 @@ On the panel to the left of the map there are a few options available while edit
 
 - **Snap to existing stops (beta)**: Experimental feature that adds stops from the baseline GTFS bundle to the new route. This feature adds stops within 20 meters of the alignment, but not more than one stop approximately every 80 meters.
 
-Once you have created an alignment, you'll need to specify when the route runs using a [simplified timetable](/docs/edit-scenario/timetable). You can do this by [copying a previously created timetable](/docs/edit-scenario/timetable#copying-timetables), or by clicking:
+Once you have created an alignment, you'll need to specify when the route runs using a [simplified timetable](/edit-scenario/timetable). You can do this by [copying a previously created timetable](/edit-scenario/timetable#copying-timetables), or by clicking:
 
 <span class="btn btn-success"><i class="fa fa-plus"></i> Add timetable</span>
 
@@ -81,7 +81,7 @@ This modification can be applied to multiple routes, but only one route will be 
 
 This modification does not automatically increase frequency in response to the more efficient routes. However, it can be paired with an adjust frequency modification to model such a response.
 
-Sometimes you will want to adjust the speed on an entire route or just a [segment](/docs/glossary#segment) of one. For instance you might want to model the addition of bus lanes or an application of transit signal priority. This modification allows you to scale the speed of existing scheduled [trips](/docs/glossary#trip), or segments of them, by a constant factor. It can be applied to whole routes (in which case more than one route may be selected) or to selected segments of a particular route or to just a subset of [trip patterns](/docs/glossary#trip-pattern).
+Sometimes you will want to adjust the speed on an entire route or just a [segment](/glossary#segment) of one. For instance you might want to model the addition of bus lanes or an application of transit signal priority. This modification allows you to scale the speed of existing scheduled [trips](/glossary#trip), or segments of them, by a constant factor. It can be applied to whole routes (in which case more than one route may be selected) or to selected segments of a particular route or to just a subset of [trip patterns](/glossary#trip-pattern).
 
 You will need to select a GTFS feed, routes and optionally trip patterns if only one route is selected. All trip patterns will be selected by default. Segments can be selected by clicking _Select_ from the toolbox shown in the figure below. This will allow you to begin drawing a polygon selection area on the map. Any segments within this area will be selected when the polygon is closed and selected segments will then render on the map in purple.
 
@@ -102,12 +102,12 @@ Finally, enter a numeric value in the _Scale speed by_ field --- this is the fac
 ### Convert to frequency 
 <a name="convert-to-frequency"/>
 
-Often a scenario will include changes to the number of trips per hour on an existing route. We support this using the _convert to frequency_ modification. It works by replacing the scheduled trips for one or more existing [trip patterns](/docs/glossary#trip-pattern) with frequency based [timetables](/docs/edit-scenario/timetable). You can opt either to
+Often a scenario will include changes to the number of trips per hour on an existing route. We support this using the _convert to frequency_ modification. It works by replacing the scheduled trips for one or more existing [trip patterns](/glossary#trip-pattern) with frequency based [timetables](/edit-scenario/timetable). You can opt either to
 
 - delete all existing trips and replace them with your own timetables or
 - replace trips only when the new timetables would be in effect.
 
-The travel and dwell times on the replacement trips are based on those of an existing trip which you can select from the affected trip pattern. The new timetables can make use of [phasing](/docs/edit-scenario/phasing) to reproduce timed services on branching lines, etc.
+The travel and dwell times on the replacement trips are based on those of an existing trip which you can select from the affected trip pattern. The new timetables can make use of [phasing](/edit-scenario/phasing) to reproduce timed services on branching lines, etc.
 
 First, create a new modification and select _Convert to frequency_. Give the modification a name; you will likely want to name it after the route you plan to modify.
 
@@ -116,7 +116,7 @@ First, create a new modification and select _Convert to frequency_. Give the mod
   <figcaption>A convert to frequency modification with a replacement timetable open</figcaption>
 </figure>
 
-Start by selecting a [GTFS feed](/docs/glossary#GTFS--GTFS-feed) and then the route from that feed that you want to adjust. You should see all trip patterns for the selected route displayed on the map.
+Start by selecting a [GTFS feed](/glossary#GTFS--GTFS-feed) and then the route from that feed that you want to adjust. You should see all trip patterns for the selected route displayed on the map.
 
 You can choose to remove all existing trips on the route (the default) and start from scratch with new timetables. Or you may choose to retain trips outside the time windows in which you specify frequencies which is useful when you are changing the frequency for only part of the day (e.g. increased weekend frequency) and want to retain the existing scheduled service at other times. This is controlled using the checkbox labeled "_Retain existing scheduled trips at times without new frequencies specified_".
 
@@ -150,7 +150,7 @@ This modification does not take into account the possibility of increased freque
 
 ### Remove trips
 
-Another common modification is to remove trips. The most common use is to remove entire routes, but it is also possible to remove only specific [trip patterns](/docs/glossary#trip-pattern) on a particular route. In order to remove trips, create a new _remove trips_ modification, and select a GTFS feed, route, and optionally the trip pattern of the trips to be removed. All trips on this route/pattern combination will be removed and the route will be shown in red on the map. Note that the "active in variants" selector always specifies whether the modification is active. In this case it implies that the trips will be removed from the selected variants.
+Another common modification is to remove trips. The most common use is to remove entire routes, but it is also possible to remove only specific [trip patterns](/glossary#trip-pattern) on a particular route. In order to remove trips, create a new _remove trips_ modification, and select a GTFS feed, route, and optionally the trip pattern of the trips to be removed. All trips on this route/pattern combination will be removed and the route will be shown in red on the map. Note that the "active in variants" selector always specifies whether the modification is active. In this case it implies that the trips will be removed from the selected variants.
 
 <figure>
   <img src="/img/remove-trips.png" alt="Remove trips" />
@@ -160,7 +160,7 @@ Another common modification is to remove trips. The most common use is to remove
 ### Reroute
 <a name="reroute"/>
 
-This modification type can be used to represent detours, extensions,and curtailments. When creating a _reroute_ modification, you first select a [GTFS feed](/docs/glossary#GTFS--GTFS-feed), route, and [trip patterns](/docs/glossary#trip-pattern). Once trip patterns are selected, you then select a stop at which the reroute alignment will start, or a stop at which the reroute alignment will end, or both, by clicking
+This modification type can be used to represent detours, extensions,and curtailments. When creating a _reroute_ modification, you first select a [GTFS feed](/glossary#GTFS--GTFS-feed), route, and [trip patterns](/glossary#trip-pattern). Once trip patterns are selected, you then select a stop at which the reroute alignment will start, or a stop at which the reroute alignment will end, or both, by clicking
 <br /><span class="btn btn-info"><i class="fa fa-crosshairs"></i> Select</span>
 <br /> then clicking an existing stop on the baseline pattern.
 
@@ -211,7 +211,7 @@ If access for a given mode is enabled, you will have options to set correspondin
 
 The default **walk time factor** and **bike time factor** values of 1 will have no effect on results. For baseline street networks built with custom generalized cost or impedance values, values other than 1 can be set, which will scale the amount of time it takes to traverse these links. For example, if you are routing by "perceived" time, a pleasant street might have a walk time factor less than 1, while a high-traffic unpleasant street might have a walk time factor greater than 1. Contact your support team for more details.
 
-*Bike level of traffic stress* can be used to set the level of traffic stress for street links added or modified by the modification. Streets beyond the Maximum level of traffic stress set in an analysis will be traversed at walking speed. See [here](learn-more/lts.html) for more details. 
+*Bike level of traffic stress* can be used to set the level of traffic stress for street links added or modified by the modification. Streets beyond the Maximum level of traffic stress set in an analysis will be traversed at walking speed. See [here](/learn-more/lts) for more details. 
 
 Finally, if **driving** is enabled, you must enter a constant speed in kilometers per hour. 
 
@@ -234,7 +234,7 @@ You can also edit previously drawn lines by clicking on the edit layers icon. Th
 ### Modify Streets
 <a name="modify-streets"/>
 
-This modification allows you to assign new access and impedance properties to existing streets in your [baseline network](/docs/glossary#baseline-network). Rather than selecting individual streets, it uses a polygon selection to apply the modification to all streets within the selected area. This is useful for applying changes to areas or corridors. 
+This modification allows you to assign new access and impedance properties to existing streets in your [baseline network](/glossary#baseline-network). Rather than selecting individual streets, it uses a polygon selection to apply the modification to all streets within the selected area. This is useful for applying changes to areas or corridors. 
 As an example, you might use this to identify a neighborhood or corridor where traffic calming measures will be implemented and model this by reducing bicycle traffic stress and decreasing driving speeds or eliminating automotive access altogether.
 Similar to the Add Streets modification, properties are set at the level of the modification, and multiple areas can be specified. Thus, seperate modifications are needed to specify different types of areas.
 

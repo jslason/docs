@@ -2,7 +2,7 @@
 
 ### How does Conveyal Analysis calculate travel times?
 
-Conveyal Analysis calculates door-to-door total travel time, without any subjective impedance factors. Travel times are always computed by finding actual paths through a full street and (where applicable) public transport ("transit", in American English) network. By default, Conveyal Analysis uses the centers of [high-resolution grid cells](/docs/analysis/methodology#spatial-grid) as destinations.
+Conveyal Analysis calculates door-to-door total travel time, without any subjective impedance factors. Travel times are always computed by finding actual paths through a full street and (where applicable) public transport ("transit", in American English) network. By default, Conveyal Analysis uses the centers of [high-resolution grid cells](/analysis/methodology#spatial-grid) as destinations.
 
 For analyses with transit disabled, the total travel time from an origin to a destination includes time spent:
 
@@ -24,7 +24,7 @@ If it is faster to reach a destination directly, without using transit, the rout
 
 ### When starting an analysis, why does the "initializing cluster" message persist for so long? <a name="why-the-wait"/>
 
-First, the main Analysis server must request and initialize a computation cluster from Amazon Web Services. For scalability, we start a "worker" server for each [transport network](/docs/glossary#transport-network) being analyzed. This means that even if you are already successfully fetching analysis results for a project, a new server will be needed if you switch to a project associated with a different GTFS bundle or region, or if you change the routing engine. 
+First, the main Analysis server must request and initialize a computation cluster from Amazon Web Services. For scalability, we start a "worker" server for each [transport network](/glossary#transport-network) being analyzed. This means that even if you are already successfully fetching analysis results for a project, a new server will be needed if you switch to a project associated with a different GTFS bundle or region, or if you change the routing engine. 
 
 To complete regional analyses quickly, we can clone hundreds of servers within a cluster for a transport network. We haven't yet built the user interface to launch additional servers from within Conveyal Analysis, so for the moment, get in touch with your support team if you need to speed up analyses.
 
@@ -50,7 +50,7 @@ All authorized users within an organization have access to that organization's r
 
 Three steps take place when starting a new single-origin analysis.
 
-First, the main Analysis server must request and initialize a compute cluster from Amazon Web Services. For scalability, we start a "worker" server for each [transport network](/docs/glossary#transport-network) being analyzed. This means that even if you are already successfully fetching analysis results for a project, a new server will be needed if you switch to a project associated with a different GTFS bundle or region, or if you change the routing engine version.
+First, the main Analysis server must request and initialize a compute cluster from Amazon Web Services. For scalability, we start a "worker" server for each [transport network](/glossary#transport-network) being analyzed. This means that even if you are already successfully fetching analysis results for a project, a new server will be needed if you switch to a project associated with a different GTFS bundle or region, or if you change the routing engine version.
 
 Second, the worker server needs to set up a transport network. It first checks whether the required transport network is already built and available for download from Amazon S3. If it is, the server downloads it and proceeds to step 3. If a pre-built network cannot be downloaded, the server downloads the required input files (OSM extract and GTFS bundle). It then builds the transport network by combining the road and transit layers, which can be a lengthy process (on the order of 10 minutes for large regions, and an hour for very large regions with dense networks). To avoid having to repeat this step, the server will upload the built network to S3 for future use.
 
@@ -81,7 +81,7 @@ Additional servers start automatically once a results for few origins in a regio
 ### How do I model corridor upgrades where a new trunk is added and existing services are converted to feeder routes?
 
 The new trunk service can be represented with an
-[add-trip modification](/docs/edit-scenario/modifications#add-trip-pattern). Existing services can be curtailed using [reroute modifications](/docs/edit-scenario/modifications#reroute). You will need separate modifications for each direction of each curtailed route, setting the start/end stop to the stop at which the route will be curtailed as a feeder to the new trunk.
+[add-trip modification](/edit-scenario/modifications#add-trip-pattern). Existing services can be curtailed using [reroute modifications](/edit-scenario/modifications#reroute). You will need separate modifications for each direction of each curtailed route, setting the start/end stop to the stop at which the route will be curtailed as a feeder to the new trunk.
 
 ### What new features is Conveyal working on?
 

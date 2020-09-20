@@ -1,10 +1,10 @@
 # Regional analysis
 
-The [single point analysis](/docs/analysis) interface also allows creating a *regional analysis*, or *multi-point analysis* which involves repeating an accessibility calculation for every location in a regular grid (See [Spatial resolution](/docs/analysis/methodology#spatial-grid)).
+The [single point analysis](/analysis) interface also allows creating a *regional analysis*, or *multi-point analysis* which involves repeating an accessibility calculation for every location in a regular grid (See [Spatial resolution](/analysis/methodology#spatial-grid)).
 
 ## Starting a regional analysis
 
-To start a regional analysis, first set the appropriate parameters using the controls for a [single point analysis](/docs/analysis), and confirm that the [isochrones](/docs/glossary#isochrone) and accessibility plots are as expected.
+To start a regional analysis, first set the appropriate parameters using the controls for a [single point analysis](/analysis), and confirm that the [isochrones](/glossary#isochrone) and accessibility plots are as expected.
 
 You can also choose custom geographic bounds for your regional analysis. By default, the entire region is analyzed, but for efficiency it is also possible to analyze a smaller area. You can set the bounds of the analysis by dragging the pins on the map, or by selecting an existing regional analysis and using the same bounds. If you plan to compare two regional analyses, make sure they have the same bounds and routing engine version. The exact version and bounds used for previous regional analyses can be selected directly in their respective dropdown menus. 
 
@@ -17,14 +17,14 @@ When you have configured all of these options, the green **Regional analysis** <
 
 Note that this button is disabled unless isochrones are displayed; checking single-origin isochrone results is a verification step that helps avoid heavy computation for analyses with invalid settings.
 
-After a few seconds, you will see your regional analysis appear in the list with a progress bar. Since Conveyal Analysis is computing accessibility from every origin in the region, it can take a [few minutes](/docs/learn-more/faq#how-long) for each regional analysis to complete.
+After a few seconds, you will see your regional analysis appear in the list with a progress bar. Since Conveyal Analysis is computing accessibility from every origin in the region, it can take a [few minutes](/learn-more/faq#how-long) for each regional analysis to complete.
 
 <figure>
   <img src="/img/regional-progress.png" />
   <figcaption>Computing status for a running regional analysis</figcaption>
 </figure>
 
-Once a regional analysis is complete, it can be viewed by selecting it from the drop-down menu, which will take you to the [regional analysis view](/docs/analysis/regional).
+Once a regional analysis is complete, it can be viewed by selecting it from the drop-down menu, which will take you to the [regional analysis view](/analysis/regional).
 
 <figure>
   <img src="/img/regional-selection.png" />
@@ -39,11 +39,11 @@ Upon selecting a completed regional analysis, you will see a screen like the fol
   <figcaption>Viewing a regional analysis</figcaption>
 </figure>
 
-The map shows the number of opportunities reachable from each location within the travel time cutoff specified when creating the regional analysis. Using the download button, you can save regional analysis results in a [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF) raster format. These files can then be opened in a GIS to conduct additional analyses or create custom maps. Downloading results also allows you to see the raw [grid cells](/docs/analysis/methodology#spatial-resolution) used for analysis, rather than the smoother interpolated results shown in your browser.
+The map shows the number of opportunities reachable from each location within the travel time cutoff specified when creating the regional analysis. Using the download button, you can save regional analysis results in a [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF) raster format. These files can then be opened in a GIS to conduct additional analyses or create custom maps. Downloading results also allows you to see the raw [grid cells](/analysis/methodology#spatial-resolution) used for analysis, rather than the smoother interpolated results shown in your browser.
 
 ## Downloading regional results
 
-Using the download button, you can save regional analysis results in a raster format (GEOTIFF). These saved files can be opened in GIS to conduct additional analyses or create custom maps. In QGIS, you will likely want to [style](https://docs.qgis.org/2.8/en/docs/training_manual/rasters/changing_symbology.html#basic-fa-changing-raster-layer-symbology) the accessibility layer with a singleband pseudocolor scheme. If you prefer to work with the results as a regular grid of vector points, you may find the "Raster values to points" tool in the QGIS processing toolbox helpful. Downloading results also allows you to see the raw [grid cells](/docs/analysis/methodology#spatial-resolution) used for analysis, rather than the smoother interpolated results shown in your browser.
+Using the download button, you can save regional analysis results in a raster format (GEOTIFF). These saved files can be opened in GIS to conduct additional analyses or create custom maps. In QGIS, you will likely want to [style](https://docs.qgis.org/2.8/en/training_manual/rasters/changing_symbology.html#basic-fa-changing-raster-layer-symbology) the accessibility layer with a singleband pseudocolor scheme. If you prefer to work with the results as a regular grid of vector points, you may find the "Raster values to points" tool in the QGIS processing toolbox helpful. Downloading results also allows you to see the raw [grid cells](/analysis/methodology#spatial-resolution) used for analysis, rather than the smoother interpolated results shown in your browser.
 
 ## Comparing regional analyses
 

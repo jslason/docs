@@ -4,11 +4,11 @@ slug: /prepare-inputs
 
 # Preparing a baseline transport network
 
-Accessibility calculations will be based on [transport networks](/docs/glossary#transport-network) that is set up in your [region](/docs/glossary#region). Transport networks includes scheduled transit service as well as the region's streets, sidewalks, bikeways, etc. Initially you will set up a [baseline network](/docs/glossary#baseline-network). Later on you will likely want to compare alternative [scenarios](/docs/glossary#scenario) by creating [modifications](/docs/glossary#modification) to the baseline network.
+Accessibility calculations will be based on [transport networks](/glossary#transport-network) that is set up in your [region](/glossary#region). Transport networks includes scheduled transit service as well as the region's streets, sidewalks, bikeways, etc. Initially you will set up a [baseline network](/glossary#baseline-network). Later on you will likely want to compare alternative [scenarios](/glossary#scenario) by creating [modifications](/glossary#modification) to the baseline network.
 
 ## Setting up a new region
 
-The [region](/docs/glossary#region) is a [bounding box](https://wiki.openstreetmap.org/wiki/Bounding_Box) defining the area to be used for accessibility calculations. It should generally cover the entire service area of the agency or agencies you will be working with. Opportunities and network components outside this area will generally not be considered.
+The [region](/glossary#region) is a [bounding box](https://wiki.openstreetmap.org/wiki/Bounding_Box) defining the area to be used for accessibility calculations. It should generally cover the entire service area of the agency or agencies you will be working with. Opportunities and network components outside this area will generally not be considered.
 
 The regions page, shown after you log in, provides a list of existing regions (if any), and the option to create a new region. It is also accessible at any later point by clicking the globe icon (<i class="fa fa-globe"></i>). From the regions page, set up a new region by clicking:
 
@@ -20,7 +20,7 @@ Enter a name for the region and an optional description. To finalize region crea
 
 ## Creating a network bundle
 
-Conveyal Analysis requires a [network bundle](/docs/glossary#network-bundle), which consists of street and transit data.
+Conveyal Analysis requires a [network bundle](/glossary#network-bundle), which consists of street and transit data.
 
 To create a network bundle, click on the Network Bundles icon (<i class="fa fa-database"></i>), then click:
 
@@ -106,13 +106,13 @@ osmium tags-filter input.osm.pbf \
 
 ## Uploading GTFS feeds
 
-If your new network bundle will not be re-using previously uploaded GTFS, start by gathering [GTFS feeds](/docs/glossary#GTFS--GTFS-feed) for the transit agencies whose service you want to include. A GTFS feed is a set of CSV files inside a `.zip` archive.
+If your new network bundle will not be re-using previously uploaded GTFS, start by gathering [GTFS feeds](/glossary#GTFS--GTFS-feed) for the transit agencies whose service you want to include. A GTFS feed is a set of CSV files inside a `.zip` archive.
 
 Once these files are gathered on your computer, select the .zip files to upload in the "Upload new GTFS" tab of the network bundle creation panel. You can select multiple GTFS feeds in the file dialogue by shift-clicking, control-clicking or command-clicking (depending on your browser/operating system).
 
 Again, note that files larger than 500MB may be rejected on upload. The largest GTFS feeds in regular use are below 400MB and most are much smaller than this. A larger file may indicate a problem. Please contact your support team if you genuinely need to upload a larger file.
 
-If there is no GTFS available for your region you can, as a workaround, create a blank slate by using a valid GTFS feed from somewhere else in the world. After creating a project as described below, you can then attempt to [import modifications](/docs/edit-scenario/usage#importing-modifications) from a shapefile representing service in your region.
+If there is no GTFS available for your region you can, as a workaround, create a blank slate by using a valid GTFS feed from somewhere else in the world. After creating a project as described below, you can then attempt to [import modifications](/edit-scenario/usage#importing-modifications) from a shapefile representing service in your region.
 
 Ensure any GTFS you upload follows requirements of the specification. Various [validation tools](https://gtfs.org/testing/) are available. Common issues include:
 
@@ -128,11 +128,11 @@ After you have specified a name for the network bundle, OSM data to re-use or up
 
 ## Creating a Project
 
-Uploading and processing a network bundle may take several minutes. Once processing is complete, you should be able to create a new [project](/docs/glossary#project) based on the bundle you uploaded. If you aren't on the projects page already, click the project icon (<i class="fa fa-cubes"></i>) and then,
+Uploading and processing a network bundle may take several minutes. Once processing is complete, you should be able to create a new [project](/glossary#project) based on the bundle you uploaded. If you aren't on the projects page already, click the project icon (<i class="fa fa-cubes"></i>) and then,
 
 <span class="btn btn-success"><i class="fa fa-plus"></i> Create new Project</span>
 
-A project is essentially a wrapper around a bundle which associates it with any scenarios and modifications you may create later on. The purpose of projects is to allow multiple users to work simultaneously on the same baseline network without stepping on each other's toes. The section on [managing modifications](/docs/edit-scenario/usage#managing-mods) describes how modifications can be shared between projects that are based on the same bundle. Once created, the bundle associated with a project cannot be changed.
+A project is essentially a wrapper around a bundle which associates it with any scenarios and modifications you may create later on. The purpose of projects is to allow multiple users to work simultaneously on the same baseline network without stepping on each other's toes. The section on [managing modifications](/edit-scenario/usage#managing-mods) describes how modifications can be shared between projects that are based on the same bundle. Once created, the bundle associated with a project cannot be changed.
 
 Give the project a descriptive name, select a bundle to which the project will be associated, and click the create button to confirm.
-You are now ready to move on to [editing scenarios](/docs/edit-scenario).
+You are now ready to move on to [editing scenarios](/edit-scenario).
