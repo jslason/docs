@@ -2,8 +2,18 @@
 title: Opportunity Datasets
 ---
 
-To measure access to spatially distributed opportunities (e.g. jobs, people, schools), you will need to ensure at least one **opportunity dataset** has been added to your project. To add or manage opportunity datasets, click the grid icon on the sidebar:
-<br /><span class="ui-icon"><i class="fa fa-th"></i> Opportunity Datasets</span>
+import {
+  FaPencilAlt,
+  FaPlus,
+  FaTh,
+  FaTrash,
+  FaUsers
+} from 'react-icons/fa'
+
+import Button from '../../components/button'
+import Image from '../../components/image'
+
+To measure access to spatially distributed opportunities (e.g. jobs, people, schools), you will need to ensure at least one **opportunity dataset** has been added to your project. To add or manage opportunity datasets, click the grid icon on the sidebar for <FaTh /> Opportunity Datasets.
 
 Opportunity datasets can be added either by uploading a CSV or shapefile representing the spatial distribution of opportunities, or by using the LODES data import tool (US only).
 
@@ -15,7 +25,7 @@ A spatial dataset representing any opportunities of interest can be uploaded in 
 - shapefile
 - our custom .grid format
 
-To start an upload, click: <br /><span class="btn btn-success"><i class="fa fa-plus"></i> Upload a new opportunity dataset</span>
+To start an upload, click: <Button variantColor='green'><FaPlus /> Upload a new opportunity dataset</Button>
 
 Enter a name for the opportunity dataset source, then select the appropriate file(s). Once this is done, click the upload button to start the upload. Opportunity datasets will be saved with the source name you entered and the attribute/column names, if any, of the uploaded files.
 
@@ -46,26 +56,24 @@ A shapefile may represent opportunities as either points or polygons. Opportunit
 
 Shapefiles should not be zipped; select all of the files in the Shapefile when uploading (at the very least, `.shp`, `.shx`, `.dbf` and `.prj`). How you select multiple files depends on your browser and operating system, but generally will involve shift-clicking, control-clicking or command-clicking.
 
-<figure>
-  <img src="/img/upload-shapefile.png" />
-  <figcaption>Uploading a Shapefile by selecting all constituent files</figcaption>
-</figure>
+<Image
+  src='/img/upload-shapefile.png'
+  alt='Uploading a Shapefile by selecting all constituent files'
+/>
 
 ## Managing opportunity datasets
 
 Selecting an existing opportunity dataset from the dropdown menu will give you options to:
 
-<span class="btn btn-warning"><i class="fa fa-pencil"></i> Edit dataset name</span><br />
-<span class="btn btn-danger"><i class="fa fa-trash"></i> Delete this dataset</span><br />
-<span class="btn btn-danger"><i class="fa fa-trash"></i> Delete entire dataset source</span> (e.g. all attributes from a shapefile)
+* <Button variantColor='yellow'><FaPencilAlt /> Edit dataset name</Button>
+* <Button variantColor='red'><FaTrash /> Delete this dataset</Button>
+* <Button variantColor='red'><FaTrash /> Delete entire dataset source</Button> (e.g. all attributes from a shapefile)
 
 You can also download your dataset as a [geoTiff](https://en.wikipedia.org/wiki/GeoTIFF) raster file for use in an external GIS application, or you can download it in our custom .grid format, which may be useful for preserving the exact data used in an analysis or transfering it between regions.
 
 ## LODES dataset import
 
-For projects in the United States, employment data from from the _Longitudinal Employer-Household Dynamics_ ([LEHD](https://lehd.ces.census.gov/)) Program can be imported with a one-click import function.
-
-<span class="btn btn-info"><i class="fa fa-group"></i> Fetch LODES (2015)</span>
+For projects in the United States, employment data from from the _Longitudinal Employer-Household Dynamics_ ([LEHD](https://lehd.ces.census.gov/)) Program can be imported with a one-click import function: <Button variantColor='cyan'><FaUsers /> Fetch LODES (2015)</Button>
 
 The [LODES](https://lehd.ces.census.gov/data/#lodes) (_LEHD Origin-Destination Employment Statistics_) dataset provides block-level data on the home and work locations of employed people living in the US. These job and worker counts are made available both as totals and as counts disaggregated by industry, earnings, education level, etc.
 

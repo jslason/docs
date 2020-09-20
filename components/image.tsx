@@ -1,16 +1,18 @@
 import useBaseUrl from '@docusaurus/useBaseUrl' 
 import React from 'react'
 
-export default function Image ({alt, path}) {
+export default function Image ({alt, src}) {
   return (
-    <div>
-      <img alt={alt} src={useBaseUrl(`/img${path}`)} />
-      <div 
-        style={{
-          textAlign: 'center',
-          fontStyle: 'italic'
-        }}
-      >{alt}</div>
-    </div>
+    <p>
+      <div style={{textAlign: 'center'}}>
+        <img alt={alt} src={useBaseUrl(src)} />
+        <div 
+          style={{
+            fontStyle: 'italic',
+            fontSize: '75%'
+          }}
+        >{alt}</div>
+      </div>
+    </p>
   )
 }
