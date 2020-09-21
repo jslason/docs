@@ -17,13 +17,7 @@
   --ifm-code-font-size: 95%;
 }
 
-.docusaurus-highlight-code-line {
-  background-color: rgb(72, 77, 91);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
-}
-
+/* style more in line with our classic logo */
 .navbar__title {
   font-weight: 300;
   font-size: 1.5rem;
