@@ -8,9 +8,6 @@ module.exports = {
   organizationName: 'conveyal', 
   projectName: 'docs', 
   themeConfig: {
-    colorMode: {
-      disableSwitch: true
-    },
     googleAnalytics: {
       trackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID
     },
