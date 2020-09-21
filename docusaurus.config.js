@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Conveyal Analysis Docs',
+  title: 'Conveyal User Manual',
   tagline: 'User manual for Conveyal',
   url: 'https://docs.conveyal.com',
   baseUrl: '/',
@@ -20,24 +20,23 @@ module.exports = {
       },
       items: [
         {
+          href: 'https://analysis.conveyal.com',
+          label: 'Log in to Analysis',
+          position: 'right'
+        },
+        {
           href: 'https://conveyal.com/contact-us',
           label: 'Contact us',
           position: 'right'
         },
         {
-          href: 'https://analysis.conveyal.com',
-          label: 'Log in',
-          position: 'right'
-        },
-        {
           href: 'https://github.com/conveyal',
-          label: 'GitHub',
+          label: 'GitHub Org',
           position: 'right'
         }
       ]
     },
     footer: {
-      style: 'dark',
       copyright: `Copyright © ${new Date().getFullYear()} Conveyal, LLC`
     }
   },
@@ -49,7 +48,6 @@ module.exports = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/conveyal/docs/edit/master',
-          showLastUpdateAuthor: true,
           showLastUpdateTime: true
         },
         theme: {
