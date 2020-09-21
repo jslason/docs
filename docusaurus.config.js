@@ -8,6 +8,9 @@ module.exports = {
   organizationName: 'conveyal', 
   projectName: 'docs', 
   themeConfig: {
+    googleAnalytics: {
+      trackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID
+    },
     image: 'img/android-chrome-512x512.png', // meta image for social media
     navbar: {
       title: 'conveyal',
