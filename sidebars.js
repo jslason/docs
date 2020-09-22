@@ -38,6 +38,7 @@ module.exports = {
       'learn-more/lts',
       'learn-more/osm',
       'learn-more/pnr',
+      'learn-more/dfunc',
       'analysis/methodology',
       'glossary'
     ]
