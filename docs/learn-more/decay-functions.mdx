@@ -8,11 +8,11 @@ import Image from '../../components/image'
 
 As of our September 2020 release, Conveyal Analysis can now apply distance decay functions rather than hard cutoffs in both regional and single-point analyses.
 
-Rather than being the sum of all opportunities whose travel time is within a specified cutoff, the accessibility indicator can be more generally defined as the sum of all opportunities in the region, with each opportunity weighted (multiplied) by the value of a "decay function". This function always returns values between zero and one, and is a monotonically decreasing function of travel time. Put differently, the longer it takes to reach each opportunity the less it counts, eventually tapering down to zero. Simple cumulative opportunities accessibility is then a special case of this general definition where the weighting function has value 1 for all travel times less than the threshold, and value 0 for all travel times above the threshold.
+Rather than being the sum of all opportunities that can be reached in less than a specified number of minutes, the accessibility indicator can be more generally defined as the sum of all opportunities in the region, with each opportunity weighted (multiplied) by the value of a "decay function". This function always returns values between zero and one, and is a monotonically decreasing function of travel time. Put differently, the longer it takes to reach each opportunity the less it counts, eventually tapering down to zero. Simple cumulative opportunities accessibility is then a special case of this general definition where the weighting function has value 1 for all travel times less than the threshold, and value 0 for all travel times at or above the threshold.
 
-If you think of accessibility as the number of opportunities falling inside an isochrone, then the purpose of distance decay functions is to blur the boundary of that isochrone. The influence of large concentrations of opportunities on accessibility values is diffused, fading out with increasing travel time from the origin, rather than simply "dropping out" of the isochrone. 
+If you think of accessibility as the number of opportunities falling inside an isochrone, then the effect of distance decay functions is to blur the boundary of that isochrone. The influence of large concentrations of opportunities on accessibility values is diffused. The opportunities fade out with increasing travel time from the origin, rather than simply "dropping out" of the isochrone or "falling off the edge". 
 
-There is a trade-off here between ease of explanation and fidelity to traveler behavior. Simple cumulative opportunities accessibility indicators are very easy to explain and interpret. A definition like "number of jobs reachable in less than 30 minutes" poses little risk of confusing an audience or sidetracking a meeting into a mathematical discussion. However, these indicators are very sensitive to the exact cutoff chosen. A large office park situated 31 minutes away might contribute nothing to the accessibility value of a particular origin point. But that jobs count could jump sharply at a neighboring origin point, from which the same office park happens to be 29 minutes away. This creates discontinuities in the accessibility surface, and clearly differs from how we perceive travel. When applying a scenario, accessibility values will tend to either jump dramatically or not at all at each location. Research shows that there is indeed a threshold effect where people avoid making trips longer than a certain maximum travel time, but...
+In choosing a decay function, there is a trade-off here between ease of explanation and fidelity to traveler behavior. Simple cumulative opportunities accessibility indicators are very easy to explain and interpret. A definition like "number of jobs reachable in less than 30 minutes" poses little risk of confusing an audience or sidetracking a meeting into a mathematical discussion. However, these indicators are very sensitive to the exact cutoff chosen. A large office park situated 31 minutes away might contribute nothing to the accessibility value of a particular origin point. But the reachable jobs count could increase sharply at a neighboring origin point, from which the same office park happens to be 29 minutes away. This creates discontinuities in the accessibility surface and differs from how most people perceive travel. 
 
 Until now, Conveyal Analysis has dealt with this by emphasizing interactive changes to the cutoff.
 
@@ -21,8 +21,7 @@ All functions are evaluated at one-second resolution. Analysis reports times in 
 
 ## Configuration
 
-This new release also adds the ability to specify and configure distance decay functions via the request JSON. 
-As an advanced feature, there is currently no graphical interface element for selecting and configuring decay functions. They must be specified in the advanced request JSON editor. Examples of JSON for each available decay function are given below.
+This new release also adds the ability to specify and configure distance decay functions via the request JSON. As an advanced feature, there is currently no graphical interface element for selecting and configuring decay functions. They must be specified in the advanced request JSON editor. Examples of JSON for each available decay function are given below.
 
 ## Available Functions
 
@@ -30,9 +29,11 @@ As an advanced feature, there is currently no graphical interface element for se
 
 The default applied in any new request is the step function, equivalent to the hard cutoff previously used for all analyses. This could be specified in the request JSON as:
 
-	"decayFunction": {
-	  "type": "step”
-	}
+```JSON
+"decayFunction": {
+  "type": "step”
+}
+```
 
 ### Logistic CDF
 
@@ -40,10 +41,12 @@ This is the logistic function, i.e. the cumulative distribution function of the 
 
 The median parameter is controlled by Conveyal's cutoff setting, leaving only the standard deviation to configure as follows: 
 
-	"decayFunction": {
-	  "type": "logistic",
-	  "standardDeviationMinutes": 5
-	}
+```JSON
+"decayFunction": {
+  "type": "logistic",
+  "standardDeviationMinutes": 5
+}
+```
 
 This is the family of curves produced at different cutoffs when the standardDeviationMinutes is set to 10:
 
@@ -62,12 +65,14 @@ The following plot shows how the form of the function varies as the standard dev
  
 ### Exponential Decay 
 
-This function is of the form e^(-λt) where λ is a single fixed decay constant in the range (-1, 0). The decay constant should be scaled for travel times in seconds. If your decay constant is for travel times in minutes, you will need to divide it by 60. Decay constants are required to be negative to ensure decay (rather than growth) in influence with increasing travel time. 
+This function is of the form e<sup>-λt</sup> where λ is a single fixed decay constant in the range (-1, 0). The decay constant should be scaled for travel times in seconds. If your decay constant is for travel times in minutes, you will need to divide it by 60. Decay constants are required to ensure weights decrease (rather than grow) with increasing travel time. 
 
-	"decayFunction": {
-	  "type": "fixed-exponential",
-	  "decayConstant": -0.00057
-	}
+```JSON
+"decayFunction": {
+  "type": "fixed-exponential",
+  "decayConstant": -0.001
+}
+```
 
 Note that unlike the other functions, this function will ignore the cutoff setting in Conveyal Analysis. This allows setting precise decay constants derived from your own models or research that do not correspond to any integer half-life. The cutoff will not affect the rate of decay or transpose the function in any way. For this reason, only one cutoff should be specified when launching a regional analysis, and that cutoff is arbitrary. Any additional cutoffs will perform extra computation but yield exactly the same results. Different percentiles will continue to affect the results - selecting different percentiles will yield different travel times to each destination, with increasing travel times giving lower weights to opportunities at those locations.
 
@@ -75,9 +80,11 @@ Note that unlike the other functions, this function will ignore the cutoff setti
 
 This is similar to the fixed-exponential option above, but in this case the decay parameter is inferred from the Analysis cutoff setting, which is treated as the half-life. It has no other parameters and is specified like this:
 
-	"decayFunction": {
-	  "type": "exponential"
-	}
+```JSON
+"decayFunction": {
+  "type": "exponential"
+}
+```
 
 This plot shows how the shape of the exponential decay changes in response to different half-lives:
 
@@ -90,10 +97,12 @@ This plot shows how the shape of the exponential decay changes in response to di
 
 This is a simple, vaguely sigmoid option, which may be useful when you have a sense of a maximum travel time that would be tolerated by any traveler, and a minimum time below which all travel is perceived to be equally easy. It is a bit more computationally efficient than the logistic CDF, as it truly reaches zero and the routing engine can skip searching for paths beyond the zero point. It is configured as follows:
 
-	"decayFunction": {
-	  "type": "linear",
-	  "widthMinutes": 10
-	}
+```JSON
+"decayFunction": {
+  "type": "linear",
+  "widthMinutes": 10
+}
+```
 
 The transition region is transposable and symmetric around the cutoff, taking widthMinutes to taper down from one to zero. The above configuration with widthMinutes equal to 10 gives the following family of linear decay functions:
 

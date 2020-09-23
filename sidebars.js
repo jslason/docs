@@ -35,10 +35,11 @@ module.exports = {
     items: [
       'learn-more/developers',
       'learn-more/faq',
-      'learn-more/lts',
-      'learn-more/osm',
-      'learn-more/pnr',
-      'learn-more/dfunc',
+      'learn-more/traffic-stress',
+      'learn-more/openstreetmap',
+      'learn-more/park-and-ride',
+      'learn-more/decay-functions',
+      'learn-more/generalized-cost',
       'analysis/methodology',
       'glossary'
     ]

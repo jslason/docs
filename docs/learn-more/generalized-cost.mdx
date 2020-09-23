@@ -1,0 +1,75 @@
+---
+title: Generalized Cost on Streets
+---
+
+import Image from '../../components/image'
+
+## Introduction
+
+Conveyal Analysis finds paths through street networks that minimize travel time. This is consistent with the way it finds paths through transit. When calculating travel time over a road segment, by default the only things considered are the length of the segment and the walk or bicycle speed specified in your request. In the case of car routing we use a speed attached to each road segment from OSM tags.
+
+A time penalty is added at each turn to reflect time spent waiting to turn across traffic and to discourage paths that zigzag excessively. By default this is only applied for cars, and is higher for left turns (30 seconds) than for right turns (10 seconds). Through relatively minor modifications these penalties can be reversed for countries where right turns are across traffic.
+
+For various reasons it can be useful to customize the factors influencing travel along each street segment, or the time spent turning from one segment to another. We have created extension points where custom plugins can be used to provide travel times that are more accurate (accounting for details like biking up hills or slow crosswalks) or serve as generalized costs capturing safety and comfort.
+
+The difference between the two is in the interpretation. In either case, the plugins return adjusted distances (which are traversed at the specified speeds) and turning times (which are constants unaffected by speed).
+
+The length of every edge can be scaled independently, and at intersections every left and right turn, and every movement straight through an intersection can have a distinct cost.
+
+## LADOT Generalized Costs
+
+Specifically in the LADOT case, we use cost supplier plugins (LaDotBikeCostSupplier, LaDotWalkCostSupplier) which use OSM tags read by LaDotCostTags.
+
+That input OSM data must be processed into segments between intersections by scripts at (Github). This is done by the Python OSM library which naturally breaks ways into routable edges between intersections.
+
+For the time being, elevation is reported as the percentage of each road falling into different percentage grades. Eventually we will move toward storing full elevation profiles, rather than these derived bins.
+
+OSM ways are generally bidirectional: they represent the centerline of a road that may allow traffic (including walking or biking) in either direction. Therefore each of the tags listed here must be suffixed with `:forward` or `:backward` to specify values in both directions. The forward direction follows the ordered sequence of node IDs within the OSM way.
+
+Tags describing intersection features (control types, crosswalks, cross_aadt) refer to the intersection at the beginning of the street segment, not the end (verify).
+
+- slope_1 percentage of this street that is 2-4% grade
+- slope_2 percentage of this street that is 4-6% grade
+- slope_3 percentage of this street above 6% grade (for biking)
+- slope_4 percentage of this street above 10% grade (for walking)
+
+Annual average daily traffic. These are the only tags that don't have the forward and backward suffixes. Self is in the direction of the way ("forward"), cross is the traffic of the perpendicular way at the intersection.
+- self_aadt
+- cross_aadt
+- parallel_aadt
+
+- control_type = {none, stop, signal}
+- bike_infra = {no, path, blvd}
+- xwalk = {none, signal, unsig}
+
+- unpaved_alley = {true/yes; other}
+- highway = {tertiary, tertiary_link, secondary, secondary_link, primary, primary_link, trunk, trunk_link, motorway, motorway_link}
+
+not currently used but must be present:
+- speed_peak
+- speed_offpeak 
+
+### Walk Costs
+
+This explains how walk costs are derived from the tags. 
+
+Perceived length: sections over 10% grade count double. Unpaved roads and alleys count 51% more. Busy roads are penalized by 14%.
+
+Turn costs are defined in terms of meters traveled at a standardized speed of 1.3 meters per second (not affected by the walking speed in the analysis request). Traversing any intersection has a fixed cost of 54 meters. Daily traffic over 10k adds a penalty of 28 meters if there is no crosswalk at all; daily traffic over 13k adds a penalty of 73 meters if there is no signalized crosswalk. The traffic figure used is the cross traffic when moving straight through an intersection; it is the greater of the traffic in the forward or backward directions when turning left (across traffic). 
+
+### Bike Costs
+
+This explains how bike costs are derived from the tags.
+
+Perceived length: sections at 2-4% grade count 37% more, sections at 4-6% grade count 123% more, and those over 6% grade count 324% more. Bike boulevards get an 11% bonus and bike paths a 16% bonus. Where bike infrastructure is not present, busy roads are penalized based on the road's average daily traffic. Roads over 30k vehicles/day are penalized by 716%, those over 20k by 140% and those over 10k by 37%.
+
+Turn costs are defined in terms of meters traveled at a standardized biking speed of 4 meters per second (not affected by the biking speed in the analysis request). All turns receive a penalty of 54 meters (which does not apply when going straight through an intersection). Stop signs and signals add 6 and 27 meters respectively. 
+
+Right turns are penalized by 50 meters if the daily traffic of the cross road exceeds 10k. Left turns onto busy cross streets, and passing straight through intersections with busy streets are penalized in the same way: 424 meters if the cross traffic exceeds 20k/day, 81 meters if it exceeds 10k/day, and 78 meters if it exceeds 5k/day.
+
+Left turns from busy streets are also affected by parallel traffic: 297 meters for over 20k/day, and 117 meters for over 10k/day.
+
+## Input Data
+
+In order to activate the generalized cost computations, every edge in the input OSM data must have all of these tags defined. Currently this requires special tags in the OSM input data, which must be generated by external scripts. This mechanism may eventually be extended, with R5 deriving these characteristics from standard OSM tags that are used in a wider range of places.
+
