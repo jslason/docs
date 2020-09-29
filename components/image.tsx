@@ -3,8 +3,8 @@ import React from 'react'
 
 const imgStyle = {
   border: '1px solid #eee',
-  boxShadow: '0 0 15px rgba(0, 0, 0, 0.1)',
-  margin: '15px 15px 0 15px'
+  boxShadow: '0 0 15px rgba(0, 0, 0, 0.2)',
+  margin: '15px 0 0'
 }
 
 export default function Image ({alt, src}) {
