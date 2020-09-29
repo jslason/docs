@@ -12,40 +12,43 @@ A time penalty is added at each turn to reflect time spent waiting to turn acros
 
 For various reasons it can be useful to customize the factors influencing travel along each street segment, or the time spent turning from one segment to another. We have created extension points where custom plugins can be used to provide travel times that are more accurate (accounting for details like biking up hills or slow crosswalks) or serve as generalized costs capturing safety and comfort.
 
-The difference between the two is in the interpretation. In either case, the plugins return adjusted distances (which are traversed at the specified speeds) and turning times (which are constants unaffected by speed).
+There is currently no technical difference between the way more accurate timings and generalized costs are handled. The only difference is in the interpretation. In either case, the plugins return adjusted distances (which are traversed at the specified speeds) and turning times (which are constants unaffected by speed).
 
-The length of every edge can be scaled independently, and at intersections every left and right turn, and every movement straight through an intersection can have a distinct cost.
+The length of every street segment between intersections can be scaled independently. At every intersection, each left and right turn and each movement straight through an intersection can have a distinct cost.
 
 ## LADOT Generalized Costs
 
-Specifically in the LADOT case, we use cost supplier plugins (LaDotBikeCostSupplier, LaDotWalkCostSupplier) which use OSM tags read by LaDotCostTags.
+Specifically in the LADOT case, we use cost supplier plugins (LaDotBikeCostSupplier, LaDotWalkCostSupplier) which use OSM tags read by the LaDotCostTags class. That input OSM data must be processed into ways that have no intersections except at their endpoints. All the required tags must be present on every edge. If not, the generalized cost functionality will be distabled. OSM data in this form is created by the data preparation scripts at https://github.com/RSGInc/ladot_analysis_dataprep. The Python OSM library used there naturally breaks ways into routable edges between intersections as required.
 
-That input OSM data must be processed into segments between intersections by scripts at (Github). This is done by the Python OSM library which naturally breaks ways into routable edges between intersections.
-
-For the time being, elevation is reported as the percentage of each road falling into different percentage grades. Eventually we will move toward storing full elevation profiles, rather than these derived bins.
+For the time being, elevation is reported as the percentage of each road falling into different percentage grades. Eventually we may move toward storing full elevation profiles, rather than these derived bins.
 
 OSM ways are generally bidirectional: they represent the centerline of a road that may allow traffic (including walking or biking) in either direction. Therefore each of the tags listed here must be suffixed with `:forward` or `:backward` to specify values in both directions. The forward direction follows the ordered sequence of node IDs within the OSM way.
 
-Tags describing intersection features (control types, crosswalks, cross_aadt) refer to the intersection at the beginning of the street segment, not the end (verify).
 
 - slope_1 percentage of this street that is 2-4% grade
 - slope_2 percentage of this street that is 4-6% grade
 - slope_3 percentage of this street above 6% grade (for biking)
 - slope_4 percentage of this street above 10% grade (for walking)
 
-Annual average daily traffic. These are the only tags that don't have the forward and backward suffixes. Self is in the direction of the way ("forward"), cross is the traffic of the perpendicular way at the intersection.
+Annual average daily traffic. [TODO verify the usage of forward and backward suffixes]. Self is in the direction of the way ("forward"), cross is the traffic of the perpendicular way at the intersection.
+
 - self_aadt
 - cross_aadt
 - parallel_aadt
+
+Tags describing intersection features (control types, crosswalks, cross_aadt) refer to the intersection at the beginning of the street segment, not the end [TODO verify this]. These tags describe intersections:
 
 - control_type = {none, stop, signal}
 - bike_infra = {no, path, blvd}
 - xwalk = {none, signal, unsig}
 
+These tags describe the type of road so we can recognize busy or dangerous roads:
+
 - unpaved_alley = {true/yes; other}
 - highway = {tertiary, tertiary_link, secondary, secondary_link, primary, primary_link, trunk, trunk_link, motorway, motorway_link}
 
-not currently used but must be present:
+Like all other tags listed here, these must be present on every way but are not currently used:
+
 - speed_peak
 - speed_offpeak 
 
