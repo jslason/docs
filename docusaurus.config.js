@@ -52,8 +52,7 @@ module.exports = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/conveyal/docs/edit/master',
-          showLastUpdateTime: true
+          editUrl: 'https://github.com/conveyal/docs/edit/master'
         },
         theme: {
           customCss: require.resolve('./custom.css'),
