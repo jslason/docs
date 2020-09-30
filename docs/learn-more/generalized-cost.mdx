@@ -32,42 +32,42 @@ OSM ways are generally bidirectional: they represent the centerline of a road th
 
 For the time being, elevation changes are reported as the percentage of each road falling into different percentage grades. Eventually we may move toward storing full elevation profiles, rather than these derived bins.
 
-- slope_1 percentage of way at 2-4% grade
-- slope_2 percentage of way at 4-6% grade
-- slope_3 percentage of way above 6% grade 
-- slope_4 percentage of way above 10% grade
+- `slope_1` percentage of way at 2-4% grade
+- `slope_2` percentage of way at 4-6% grade
+- `slope_3` percentage of way above 6% grade 
+- `slope_4` percentage of way above 10% grade
 
 Note that the last two categories overlap, because the first is used for biking and the second for walking.
 
 #### AADT Tags
 
-Annual Average Daily Traffic [TODO verify the usage of forward and backward suffixes]. Self is in the direction of the way ("forward"), cross is the traffic of the perpendicular way at the intersection.
+These tags give the Annual Average Daily Traffic (AADT) on the way and through the intersections at its ends.
 
-- self_aadt
-- cross_aadt
-- parallel_aadt
+- `self_aadt` is the traffic on the way itself (no forward/backward suffixes, currently unused)
+- `cross_aadt` cross traffic on the perpendicular way through the intersections
+- `parallel_aadt` is the traffic on the way itself in each direction
 
 #### Intersection Tags
 
-Tags describing intersection features (control types, crosswalks, cross_aadt) refer to the intersection at the beginning of the street segment, not the end [TODO verify this]. These tags describe intersections:
+Tags describing intersection features (control types, crosswalks, cross_aadt) refer to the intersection at the end of the street segment (not the beginning) in each direction (forward/backward). These tags describe intersections:
 
-- control_type is one of {none, stop, signal}
-- bike_infra is one of {no, path, blvd}
-- xwalk is one of {none, signal, unsig}
+- `control_type` is one of {none, stop, signal}
+- `bike_infra` is one of {no, path, blvd}
+- `xwalk` is one of {none, signal, unsig}
 
 #### Road Type Tags
 
-These tags describe the type of road so we can recognize busy or dangerous roads:
+These tags describe the type of road so we can recognize busy or dangerous roads. The forward/backward suffixes do not apply here.
 
-- unpaved_alley is one of {true/yes; other}
-- highway is one of {tertiary, tertiary_link, secondary, secondary_link, primary, primary_link, trunk, trunk_link, motorway, motorway_link}
+- `unpaved_alley` is one of {true/yes; other}
+- `highway` is any value, with "high traffic" defined as those having a value in {tertiary, tertiary_link, secondary, secondary_link, primary, primary_link, trunk, trunk_link, motorway, motorway_link}
 
 #### Other Tags
 
 Like all other tags listed here, these must be present on every way but are not currently used:
 
-- speed_peak
-- speed_offpeak 
+- `speed_peak`
+- `speed_offpeak` 
 
 ### Walk Costs
 
