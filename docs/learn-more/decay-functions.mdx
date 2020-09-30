@@ -61,12 +61,12 @@ The following plot shows how the form of the function varies as the standard dev
  
 ### Exponential Decay 
 
-This function is of the form e<sup>λt</sup> where λ is a single fixed decay constant in the range (-1, 0). The decay constant should be scaled for travel times in seconds. If your decay constant is for travel times in minutes, you will need to divide it by 60. Decay constants are required to ensure weights decrease (rather than grow) with increasing travel time. This function can be specified in the advanced JSON view as follows:
+This function is of the form e<sup>-λt</sup> where λ is a single fixed decay constant in the range (0, 1). It is constrained to be positive to ensure weights decrease (rather than grow) with increasing travel time. The decay constant should be scaled for travel times in seconds. If your decay constant is for travel times in minutes, you will need to divide it by 60. This function can be specified in the advanced JSON view as follows:
 
 ```JSON
 "decayFunction": {
   "type": "fixed-exponential",
-  "decayConstant": -0.001
+  "decayConstant": 0.001
 }
 ```
 
