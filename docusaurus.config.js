@@ -55,7 +55,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'conveyal', 
   projectName: 'docs', 
-  themeConfig: themeConfig,
+  themeConfig,
   presets: [
     [
       '@docusaurus/preset-classic',
