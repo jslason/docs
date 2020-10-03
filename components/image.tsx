@@ -2,7 +2,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 import React from 'react'
 
 const imgStyle = {
-  border: '1px solid #eee',
+  // border: '1px solid #eee',
   boxShadow: '0 0 15px rgba(0, 0, 0, 0.2)',
   margin: '15px 0 0'
 }
