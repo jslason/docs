@@ -1,5 +1,8 @@
-var themeConfig = {
+const themeConfig = {
   image: 'img/android-chrome-512x512.png', // meta image for social media
+  colorMode: {
+    respectPrefersColorScheme: true
+  },
   navbar: {
     title: 'conveyal',
     logo: {
@@ -9,23 +12,31 @@ var themeConfig = {
     items: [
       {
         href: 'https://analysis.conveyal.com',
-        label: 'Log in to Analysis',
+        label: 'Log in',
         position: 'right'
       },
       {
         href: 'https://conveyal.com/contact-us',
-        label: 'Contact us',
+        label: 'Contact',
         position: 'right'
       },
       {
         href: 'https://github.com/conveyal',
-        label: 'GitHub Org',
+        className: 'header-github-link',
+        'aria-label': 'GitHub Org',
         position: 'right'
       }
     ]
   },
   footer: {
     copyright: `Copyright © ${new Date().getFullYear()} Conveyal, LLC`
+  }
+}
+
+if (process.env.ALGOLIA_API_KEY) {
+  themeConfig.algolia = {
+    apiKey: process.env.ALGOLIA_API_KEY,
+    indexName: process.env.ALGOLIA_INDEX_NAME
   }
 }
 
