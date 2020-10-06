@@ -25,6 +25,14 @@
   margin-top: -0.25rem;
 }
 
+.GrowImage {
+  max-height: 25rem;
+}
+
+.GrowImage:hover {
+  max-height: unset;
+}
+
 /* Github link taken from https://github.com/facebook/docusaurus/blob/master/website/src/css/custom.css */
 .header-github-link:hover {
   opacity: 0.6;
