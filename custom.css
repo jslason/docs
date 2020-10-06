@@ -25,6 +25,19 @@
   margin-top: -0.25rem;
 }
 
+.GrowImage {
+  max-height: 25rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin: 15px 0 0;
+  cursor: zoom-in;
+}
+
+.GrowImage:focus,
+.GrowImage:active {
+  cursor: zoom-out;
+  max-height: unset;
+}
+
 /* Github link taken from https://github.com/facebook/docusaurus/blob/master/website/src/css/custom.css */
 .header-github-link:hover {
   opacity: 0.6;

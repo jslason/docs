@@ -1,13 +1,19 @@
 import useBaseUrl from '@docusaurus/useBaseUrl' 
 import React from 'react'
 
-export default function Image ({alt, src}) {
+const imgStyle = {
+  boxShadow: '0 0 15px rgba(0, 0, 0, 0.2)',
+  margin: '15px 0 0',
+  maxWidth: '100%'
+}
+
+export default function Video ({alt, src}) {
   return (
     <div style={{marginBottom: '20px', textAlign: 'center'}}>
-      <img 
-        alt={alt} 
-        className='GrowImage'
-        src={useBaseUrl(src)}
+      <video 
+        controls
+        src={useBaseUrl(src)} 
+        style={imgStyle}
       />
       <div 
         style={{
