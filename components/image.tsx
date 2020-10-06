@@ -8,21 +8,19 @@ const imgStyle = {
 
 export default function Image ({alt, src}) {
   return (
-    <p>
-      <div style={{textAlign: 'center'}}>
-        <img 
-          alt={alt} 
-          className='GrowImage'
-          src={useBaseUrl(src)} 
-          style={imgStyle}
-        />
-        <div 
-          style={{
-            fontStyle: 'italic',
-            fontSize: '75%'
-          }}
-        >{alt}</div>
-      </div>
-    </p>
+    <div style={{marginBottom: '20px', textAlign: 'center'}}>
+      <img 
+        alt={alt} 
+        className='GrowImage'
+        src={useBaseUrl(src)} 
+        style={imgStyle}
+      />
+      <div 
+        style={{
+          fontStyle: 'italic',
+          fontSize: '75%'
+        }}
+      >{alt}</div>
+    </div>
   )
 }

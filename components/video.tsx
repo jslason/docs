@@ -9,20 +9,18 @@ const imgStyle = {
 
 export default function Video ({alt, src}) {
   return (
-    <p>
-      <div style={{textAlign: 'center'}}>
-        <video 
-          controls
-          src={useBaseUrl(src)} 
-          style={imgStyle}
-        />
-        <div 
-          style={{
-            fontStyle: 'italic',
-            fontSize: '75%'
-          }}
-        >{alt}</div>
-      </div>
-    </p>
+    <div style={{marginBottom: '20px', textAlign: 'center'}}>
+      <video 
+        controls
+        src={useBaseUrl(src)} 
+        style={imgStyle}
+      />
+      <div 
+        style={{
+          fontStyle: 'italic',
+          fontSize: '75%'
+        }}
+      >{alt}</div>
+    </div>
   )
 }
