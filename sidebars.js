@@ -30,6 +30,13 @@ module.exports = {
     ]
   }, {
     type: 'category',
+    label: 'How to',
+    collapsed: false,
+    items: [
+      'how-to/aggregate-regional-results'
+    ]
+  }, {
+    type: 'category',
     label: 'Learn more',
     collapsed: false,
     items: [
