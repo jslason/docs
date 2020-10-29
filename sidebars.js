@@ -30,10 +30,10 @@ module.exports = {
     ]
   }, {
     type: 'category',
-    label: 'How to',
+    label: 'Guides',
     collapsed: true,
     items: [
-      'how-to/aggregate-regional-results'
+      'guides/aggregate-regional-results'
     ]
   }, {
     type: 'category',
