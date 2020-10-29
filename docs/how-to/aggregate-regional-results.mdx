@@ -1,0 +1,63 @@
+---
+title: Summarize regional results for jurisdictions and demographic groups
+---
+
+import {
+  FaPlus,
+  FaCaretDown
+} from 'react-icons/fa'
+
+import Button from '../../components/button'
+import Image from '../../components/image'
+
+After completing a [regional analysis](../analysis/regional), you may want to summarize results in various ways, such as:
+
+* The 10th percentile, median, and 90th percentile levels of access to jobs in a region, for workers in different demographic groups, as part of an equity analysis
+* The weighted average access to healthcare for residents living in different neighborhoods or communities of concern
+* The combined effect of changes in destination density, transport networks, and residential density
+
+On a regional analysis results page, selecting appropriate options in the **Aggregation Area** and **Weighted by** menus will allow you to answer these questions. 
+
+The following examples assume appropriate aggregation areas and opportunity datasets have already been uploaded and are available in these menus. If the options you need are not available, see [these instructions for uploading](../analysis/regional#uploading-aggregation-areas).
+
+# Example: Comparing access to jobs for workers in different groups
+A regional planning authority wants to compare how access to jobs varies across earnings/income groups.
+1. Run a regional analysis, selecting various earnings categories as opportunity datasets.
+<Image 
+  src='/img/regional-create.png'
+  alt='Selecting various earnings categories when creating a regional analysis'
+/>
+2. View the regional results.
+3. Select the planning area boundary as the **aggregation area**.
+4. Select corresponding opportunity dataset (destination) and weighted by (origin) categories. In this analysis, low-earning workers can access 61,687 low-earning jobs, while high-earning workers can access 218,892 high-earning jobs.
+
+<Image
+  src='/img/aggregation-low-earnings.png'
+  alt='Matched access for low-earning jobs/workers'
+/>
+
+<Image
+  src='/img/aggregation-high-earnings.png'
+  alt='Matched access for high-earning jobs/workers'
+/>
+
+
+# Example: Comparing the combined effect of employment and residential densification
+A city wants to evaluate how planned land-use changes affect access to jobs, comparing a 2016 baseline to a 2040 horizon year. The planned changes include higher densities for both job locations and residential populations.
+
+1. Run regional analyses for access to jobs by transit, selecting 2016 job locations and 2040 job locations as opportunity datasets
+2. View the regional results for access to jobs in 2016.
+3. Select the City Boundary as the **aggregation area**.
+4. Select 2016 population as the **weighted by** option.
+5. Note the results: given the distribution of the residential population and workplaces in the year 2016, the average resident of the city would have access to 540,762 jobs within a 60-minute transit commute. The 10th percentile level of job access is 111,743 (i.e. 90% of the population can access at least that many jobs within a 60-minute transit commute). Adjusting the **Percentile of accessibility** slider would display results for different percentiles.
+<Image
+  src='/img/la-aggregation-2016.png'
+  alt='Summarizing access to jobs for city residents in the 2016 baseline year'
+/>
+6. Now view the regional results for access to jobs in 2040.
+7. Select 2040 population as the **weighted by** option.
+8. Note the results: given the distribution of the residential population and workplaces in the year 2040, the average resident of the city would have access to 676,017 jobs within a 60-minute transit commute. The 10th percentile level of job access is 147,051.
+<Image
+  src='/img/la-aggregation-2040.png'
+  alt='Summarizing access to jobs for city residents in the planned 2040 horizon year'
+/>
