@@ -31,14 +31,14 @@ module.exports = {
   }, {
     type: 'category',
     label: 'How to',
-    collapsed: false,
+    collapsed: true,
     items: [
       'how-to/aggregate-regional-results'
     ]
   }, {
     type: 'category',
     label: 'Learn more',
-    collapsed: false,
+    collapsed: true,
     items: [
       'learn-more/developers',
       'learn-more/faq',
