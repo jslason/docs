@@ -9,16 +9,18 @@ export default function Image ({alt, src}) {
       <img 
         alt={alt} 
         className='ZoomableImage'
-        height='300px'
         onClick={() => setIsActive(true)}
         src={useBaseUrl(src)}
       />
       {isActive && (
-        <img
-          className='ImageOverlay'
-          onClick={() => setIsActive(false)}
-          src={useBaseUrl(src)}
-        />
+        <>
+          <div className='ImageOverlayBackdrop' />
+          <img
+            className='ImageOverlay'
+            onClick={() => setIsActive(false)}
+            src={useBaseUrl(src)}
+          />
+        </>
       )}
       <div 
         style={{
