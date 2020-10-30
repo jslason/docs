@@ -25,17 +25,24 @@
   margin-top: -0.25rem;
 }
 
-.GrowImage {
-  max-height: 25rem;
+.ZoomableImage {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   margin: 15px 0 0;
   cursor: zoom-in;
 }
 
-.GrowImage:focus,
-.GrowImage:active {
+.ImageOverlay {
+  box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.5);
   cursor: zoom-out;
   max-height: unset;
+  position: fixed;
+  max-height: 90vh;
+  max-width: 90vw;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Github link taken from https://github.com/facebook/docusaurus/blob/master/website/src/css/custom.css */
