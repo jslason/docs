@@ -33,7 +33,8 @@ module.exports = {
     label: 'Guides',
     collapsed: true,
     items: [
-      'guides/aggregate-regional-results'
+      'guides/aggregate-regional-results',
+      'guides/account-for-congestion'
     ]
   }, {
     type: 'category',
