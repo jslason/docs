@@ -1,0 +1,16 @@
+---
+title: Compute access and travel times for custom points
+---
+
+import {
+  FaPlus,
+  FaCaretDown
+} from 'react-icons/fa'
+
+Conveyal is optimized to calculate accessibility indicators for every point in an analysis [grid](/analysis/methodology#spatial-resolution). 
+
+In certain cases, however, you may be interested in calculating accessibility indicators for certain non-grid "freeform" origins, or travel time indicators between a set of origins and destinations. There are a few prototype approaches for conduction such calculations.
+
+To download travel time surfaces, isochrones, or accessibility results for specific sets of origins using Python scripts, see the notebook in this [repository](https://github.com/conveyal/batch-isochrones). This notebook is provided as an example only, and Conveyal provides no guarantee of ongoing API compatibility such external scripts.
+
+Alternatively, Conveyal has experimental options for uploading CSVs of origin/destination coordinates, then computing travel times between these origins and destinations (all combinations, or for matched one-to-one pairs). This capability will be enabled for general users in an upcoming release. In the meantime, contact your support team if you are interested.

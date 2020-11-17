@@ -35,7 +35,8 @@ module.exports = {
     items: [
       'guides/aggregate-regional-results',
       'guides/account-for-congestion',
-      'guides/engage-stakeholders'
+      'guides/engage-stakeholders',
+      'guides/compute-freeform'
     ]
   }, {
     type: 'category',
