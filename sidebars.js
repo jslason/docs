@@ -34,7 +34,8 @@ module.exports = {
     collapsed: true,
     items: [
       'guides/aggregate-regional-results',
-      'guides/account-for-congestion'
+      'guides/account-for-congestion',
+      'guides/engage-stakeholders'
     ]
   }, {
     type: 'category',
