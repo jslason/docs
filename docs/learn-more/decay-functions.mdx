@@ -1,23 +1,21 @@
 ---
-title: Distance Decay Functions
+title: Decay Functions
 ---
 
 import Image from '../../components/image'
 
 ## Introduction
 
-As of our September 2020 release, Conveyal Analysis can now apply distance decay functions rather than hard cutoffs in both regional and single-point analyses.
+Conveyal Analysis can apply decay functions rather than hard cutoffs in both regional and single-point analyses. Rather than being the sum of all opportunities that can be reached in less than a specified number of minutes, an accessibility indicator can be more generally defined as the sum of all opportunities in the region, with each opportunity weighted (multiplied) by the value of a "decay function". This function always returns values between zero and one, and is a monotonically decreasing function of travel time. Put differently, the longer it takes to reach each opportunity the less it counts, eventually tapering down to zero. Simple cumulative opportunities accessibility is then a special case of this general definition where the weighting function has value 1 for all travel times less than the threshold, and value 0 for all travel times at or above the threshold.
 
-Rather than being the sum of all opportunities that can be reached in less than a specified number of minutes, the accessibility indicator can be more generally defined as the sum of all opportunities in the region, with each opportunity weighted (multiplied) by the value of a "decay function". This function always returns values between zero and one, and is a monotonically decreasing function of travel time. Put differently, the longer it takes to reach each opportunity the less it counts, eventually tapering down to zero. Simple cumulative opportunities accessibility is then a special case of this general definition where the weighting function has value 1 for all travel times less than the threshold, and value 0 for all travel times at or above the threshold.
-
-If you think of accessibility as the number of opportunities falling inside an isochrone, then the effect of distance decay functions is to blur the boundary of that isochrone. The influence of large concentrations of opportunities on accessibility values is diffused. The opportunities fade out with increasing travel time from the origin, rather than simply "dropping out" of the isochrone or "falling off the edge". 
+If you think of accessibility as the number of opportunities falling inside an isochrone, then the effect of decay functions is to blur the boundary of that isochrone. The influence of large concentrations of opportunities on accessibility values is diffused. The opportunities fade out with increasing travel time from the origin, rather than simply "dropping out" of the isochrone or "falling off the edge". 
 
 <Image
  src='/img/decay-access.png'
  alt='Comparing cumulative accessibility using exponential and logistic decay functions'
 />
 
-In choosing a decay function, there is a trade-off here between ease of explanation and fidelity to traveler behavior. Simple cumulative opportunities accessibility indicators are very easy to explain and interpret. A definition like "number of jobs reachable in less than 30 minutes" poses little risk of confusing an audience or sidetracking a meeting into a mathematical discussion. However, these indicators are very sensitive to the exact cutoff chosen. A large office park situated 31 minutes away might contribute nothing to the accessibility value of a particular origin point. But the reachable jobs count could increase sharply at a neighboring origin point, from which the same office park happens to be 29 minutes away. This creates discontinuities in the accessibility surface and differs from how most people perceive travel. 
+In choosing a decay function, there is a trade-off between ease of explanation and fidelity to traveler behavior. Simple cumulative opportunities accessibility indicators are very easy to explain and interpret. A definition like "number of jobs reachable in less than 30 minutes" poses little risk of confusing an audience or sidetracking a meeting into a mathematical discussion. However, these indicators are very sensitive to the exact cutoff chosen. A large office park situated 31 minutes away might contribute nothing to the accessibility value of a particular origin point. But the reachable jobs count could increase sharply at a neighboring origin point, from which the same office park happens to be 29 minutes away. This creates discontinuities in the accessibility surface and differs from how most people perceive travel. 
 
 Until now, Conveyal Analysis has dealt with this sensitivity by emphasizing interactive changes to the cutoff: in single point analyses you can readily shift the cutoff by a minute or two to ensure that an accessibility figure you're observing is not at an unstable location or time. Decay functions provide an alternate strategy for confronting this issue, as well as the important fact that some travelers will tolerate much higher travel times than others: decay functions may be interpreted as applying different step cutoffs for different proportions of the population.
 
@@ -27,7 +25,7 @@ All decay functions are evaluated at one-second resolution, so the weights appli
 
 The default function applied in any new request is the step function, equivalent to the hard cutoff previously used for all analyses. It is possible to select a different decay function in the request settings of the single-point analysis tab and set that function's parameters (controlling the shape and steepness of the downward slope). These choices will be passed on to any regional analysis that you run. You should see the effects of the chosen decay function reflected in the cumulative accessibility plot, generally creating a smoother curve than a step function does.
 
-As with most other options, distance decay functions can also be specified in the advanced request JSON editor. Examples of JSON are given below along with descriptions of each available decay function.
+As with most other options, decay functions can also be specified in the advanced request JSON editor. Examples of JSON are given below along with descriptions of each available decay function.
 
 ## Available Functions
 

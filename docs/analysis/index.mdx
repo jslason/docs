@@ -9,6 +9,7 @@ import {
 } from 'react-icons/fa'
 
 import Image from '../../components/image'
+import Video from '../../components/video'
 
 The main analysis page is for generating [isochrones](/glossary#isochrone) (travel time contours) from selected origins. To enter analysis mode, click the <FaChartArea /> icon on the sidebar. 
 
@@ -39,9 +40,9 @@ Reducing the travel time should smoothly decrease the size of the isochrone.
 The default values are 60 minutes, at the 50<sup>th</sup> percentile. This would mean that the default isochrone boundary is drawn where the median trip in the selected departure window would take exactly one hour. 
 For single point analysis, percentile values are restricted to a preset range (5,25,50,75,95), so moving this slider will result in fairly discrete changes in the isochrone. An arbitrary percentile value can be set for a [regional analysis](/analysis/regional). 
 
-<Image 
-  src='/img/travel-time-slider.gif'
+<Video 
   alt='Testing different travel time cutoffs, percentiles, and origins'
+  src='/travel-time-slider.m4v' 
 />
 
 The display of modifications on the map is controlled in editing mode (See: [Toggling display of modifications](/edit-scenario/usage#toggle-mod-display)). To change what modifications are shown, you must set the visibility there and then navigate back to the analysis page. 

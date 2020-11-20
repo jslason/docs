@@ -25,6 +25,38 @@
   margin-top: -0.25rem;
 }
 
+.ZoomableImage {
+  box-shadow: 0 0 15px rgba(24, 96, 141, 0.2);
+  margin: 15px 0 0;
+  object-fit: contain;
+  max-height: 350px;
+  max-width: 100%;
+  cursor: zoom-in;
+}
+
+.ImageOverlayBackdrop {
+  cursor: zoom-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: brightness(70%) blur(3px);
+  z-index: 1000;
+}
+
+.ImageOverlay {
+  box-shadow: 0 0 15px rgba(24, 96, 141, 0.2);
+  cursor: zoom-out;
+  position: fixed;
+  max-height: 95vh;
+  max-width: 95vw;
+  z-index: 1001;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* Github link taken from https://github.com/facebook/docusaurus/blob/master/website/src/css/custom.css */
 .header-github-link:hover {
   opacity: 0.6;
