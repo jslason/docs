@@ -30,6 +30,7 @@ export default function Btn ({
         backgroundColor: variant == 'outline' ? 'none' : bgColorMap[variantColor],
         border: variant == 'outline' ? bgColorMap[variantColor] : 'none',
         borderRadius: '4px',
+        borderStyle: 'solid',
         borderWidth: 'thin',
         color: variant == 'outline' ? bgColorMap[variantColor] : fgColorMap[variantColor],
         display: 'inline-block',
