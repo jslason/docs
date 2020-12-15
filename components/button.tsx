@@ -27,7 +27,7 @@ export default function Btn ({
   return (
     <span
       style={{
-        backgroundColor: bgColorMap[variantColor],
+        backgroundColor: variant == 'outline' ? none : bgColorMap[variantColor],
         border: variant == 'outline' ? bgColorMap[variantColor] : 'none',
         borderRadius: '4px',
         color: variant == 'outline' ? bgColorMap[variantColor] : fgColorMap[variantColor],
